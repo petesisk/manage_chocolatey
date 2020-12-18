@@ -5,9 +5,9 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-- task: vsts-chef-task-install-chefdk@1
+- task: component@3
   inputs:
-    chefDKChannel: 'stable'
+    component: 'chef-workstation'
   env:
       CHEF_LICENSE: accept
 
