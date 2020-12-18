@@ -17,14 +17,14 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'C:\opscode\chefdk\bin\chef install'
+    script: 'C:\opscode\chef-workstation\chefdk\bin\chef install'
     workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chef_chocolatey/'
   env:
     CHEF_LICENSE: accept
 
 - task: CmdLine@2
   inputs:
-    script: 'C:\opscode\chefdk\bin\chef-client -z -o "recipe[chef_chocolatey]"'
+    script: 'C:\opscode\chef-workstation\bin\chef-client -z -o "recipe[chef_chocolatey]"'
     workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chef_chocolatey/'
   env:
     CHEF_LICENSE: accept
