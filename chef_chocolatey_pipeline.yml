@@ -25,12 +25,12 @@ steps:
   env:
     CHEF_LICENSE: accept
 
-- task: CmdLine@2
-  inputs:
-    script: 'C:\opscode\chefdk\bin\knife upload .'
-    workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chef_chocolatey/'
-  env:
-    CHEF_LICENSE: accept
+# - task: CmdLine@2
+#   inputs:
+#     script: 'C:\opscode\chefdk\bin\knife upload .'
+#     workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chef_chocolatey/'
+#   env:
+#     CHEF_LICENSE: accept
 
 # - task: CmdLine@2
 #   inputs:
