@@ -6,25 +6,25 @@ pool:
 
 steps:
 
-# - task: vsts-chef-task-install-chefdk@1
-#   inputs:
-#     chefDKChannel: 'stable'
-
-- task: chef-software.chef-azdo.install.component@3
-  displayName: Install Chef Component
+- task: vsts-chef-task-install-chefdk@1
   inputs:
-    component: chef-workstation
+    chefDKChannel: 'stable'
+
+# - task: chef-software.chef-azdo.install.component@3
+#   displayName: Install Chef Component
+#   inputs:
+#     component: chef-workstation
 
 - task: CmdLine@2
   inputs:
-    script: 'C:\opscode\chef-workstation\bin\chef install'
+    script: 'C:\opscode\chefdk\bin\chef install'
     workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chef_chocolatey/'
   env:
     CHEF_LICENSE: accept
 
 - task: CmdLine@2
   inputs:
-    script: 'C:\opscode\chef-workstation\bin\chef-client -z -o "recipe[chef_chocolatey]"'
+    script: 'C:\opscode\chefdk\bin\chef-client -z -o "recipe[chef_chocolatey]"'
     workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chef_chocolatey/'
   env:
     CHEF_LICENSE: accept
