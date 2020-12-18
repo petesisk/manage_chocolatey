@@ -14,3 +14,4 @@ run_list 'chef_chocolatey::default'
 
 # Specify a custom source for a single cookbook:
 cookbook 'chef_chocolatey', path: '.'
+cookbook 'chocolatey'
