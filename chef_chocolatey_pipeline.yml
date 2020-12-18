@@ -6,9 +6,14 @@ pool:
 
 steps:
 
-- task: vsts-chef-task-install-chefdk@1
+# - task: vsts-chef-task-install-chefdk@1
+#   inputs:
+#     chefDKChannel: 'stable'
+
+- task: chef-software.chef-azdo.install.component@3
+  displayName: Install Chef Component
   inputs:
-    chefDKChannel: 'stable'
+    component: chef-workstation
 
 - task: CmdLine@2
   inputs:
