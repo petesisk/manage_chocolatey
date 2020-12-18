@@ -4,6 +4,5 @@ provisioner:
 
 suites:
   - name: chef_chocolatey
-    named_run_list: chef_chocolatey
-#     provisioner:
-#       policyfile: ./Policyfile.rb
+    provisioner:
+      policyfile: ./Policyfile.rb
