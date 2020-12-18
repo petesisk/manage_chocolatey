@@ -24,7 +24,7 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'C:\opscode\chefdk\bin\chef-client -j ./Policyfile.lock.json'
+    script: 'C:\opscode\chefdk\bin\chef-client -z -j ./Policyfile.lock.json'
     workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chef_chocolatey/'
   env:
     CHEF_LICENSE: accept
