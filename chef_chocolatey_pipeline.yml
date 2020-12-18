@@ -1,0 +1,53 @@
+trigger:
+- none
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: vsts-chef-task-install-chefdk@1
+  inputs:
+    chefDKChannel: 'stable'
+  env:
+      CHEF_LICENSE: accept
+
+- task: CmdLine@2
+  inputs:
+    script: 'C:\opscode\chefdk\bin\chef install'
+    workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chef_chocolatey/'
+  env:
+    CHEF_LICENSE: accept
+
+- task: CmdLine@2
+  inputs:
+    script: 'C:\opscode\chefdk\bin\chef-zero'
+    workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chef_chocolatey/'
+  env:
+    CHEF_LICENSE: accept
+
+- task: CmdLine@2
+  inputs:
+    script: 'C:\opscode\chefdk\bin\knife upload .'
+    workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chef_chocolatey/'
+  env:
+    CHEF_LICENSE: accept
+
+# - task: CmdLine@2
+#   inputs:
+#     script: 'C:\opscode\chefdk\bin\chef-client --chef-license=accept --version'
+#     workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chef_chocolatey/'
+    
+# - task: CmdLine@2
+#   inputs:
+#     script: 'C:\opscode\chefdk\bin\chef install Policyfile.rb --chef-license accept'
+#     workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chef_chocolatey/'
+# - task: CmdLine@2
+#   inputs:
+#     script: 'C:\opscode\chefdk\bin\chef-client -z -o "recipe[chef_chocolatey]"'
+#     workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chef_chocolatey/'
+#   env:
+#     CHEF_LICENSE: accept
+# - task: CmdLine@2
+#   inputs:
+#     script: 'C:\opscode\chefdk\bin\kitchen list all'
+#     workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chef_chocolatey/'
