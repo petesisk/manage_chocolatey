@@ -6,9 +6,9 @@ pool:
 
 steps:
 
-- task: component@3
+- task: vsts-chef-task-install-chefdk@1
   inputs:
-    component: 'chef-workstation'
+    chefDKChannel: 'stable'
 
 - task: CmdLine@2
   inputs:
