@@ -5,11 +5,10 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
+
 - task: component@3
   inputs:
     component: 'chef-workstation'
-  env:
-      CHEF_LICENSE: accept
 
 - task: CmdLine@2
   inputs:
