@@ -6,9 +6,9 @@
 
 include_recipe 'chocolatey'
 
-ohai_plugin 'choco_list'
+ohai_plugin 'chocolist'
 
-log node['choco_list']
+log node['chocolist']
 
 node['chef_chocolatey']['installs'].each do |name|
   chocolatey_package name do
@@ -27,7 +27,7 @@ end
 node['chef_chocolatey']['managed_updates'].each do |name|
   chocolatey_package name do
     action :install
-    only_if { node['choco_list']['packages'].include?(name) } 
+    only_if { node['chocolist']['packages'].include?(name) } 
     returns [0, 3010]
   end
 end
