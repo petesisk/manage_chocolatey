@@ -8,7 +8,7 @@ include_recipe 'chocolatey'
 
 ohai_plugin 'chocolist'
 
-log node['chocolist']
+log node['chocolist']['packages']
 
 node['chef_chocolatey']['installs'].each do |name|
   chocolatey_package name do
