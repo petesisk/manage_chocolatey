@@ -6,3 +6,6 @@ default['chef_chocolatey'] = {
     'vlc'
   ]
 }
+default['chocolatey'] = {
+  'sensitive' => false
+}
