@@ -24,10 +24,15 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'C:\opscode\chefdk\bin\chef-client -z -j ./Policyfile.lock.json'
+    script: 'C:\opscode\chefdk\bin\chef export $(Build.Repository.LocalPath)/zero_repo'
     workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chef_chocolatey/'
   env:
     CHEF_LICENSE: accept
+    
+- task: CmdLine@2
+  inputs:
+    script: 'dir /s'
+    workingDirectory: '$(Build.Repository.LocalPath)'
 
 # - task: CmdLine@2
 #   inputs:
