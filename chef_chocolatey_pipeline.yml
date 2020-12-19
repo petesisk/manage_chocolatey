@@ -18,7 +18,7 @@ steps:
 - task: CmdLine@2
   displayName: Add Chef-Workstation to Path
   inputs:
-    script: 'set PATH=%PATH%;C:\opscode\chef-workstation\bin\'
+    script: 'dir C:\opscode\chef-workstation\bin\ /s'
 
 - task: CmdLine@2
   displayName: Install Chef PolicyFile
@@ -27,6 +27,7 @@ steps:
     workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chef_chocolatey/'
   env:
     CHEF_LICENSE: accept
+    PATH: C:\opscode\chef-workstation\bin\
 
 - task: CmdLine@2
   displayName: Export Chef PolicyFile
