@@ -16,11 +16,6 @@ steps:
     component: chef-workstation
 
 - task: CmdLine@2
-  displayName: Add Chef-Workstation to Path
-  inputs:
-    script: 'dir C:\opscode\chef-workstation\bin\ /s'
-
-- task: CmdLine@2
   displayName: Install Chef PolicyFile
   inputs:
     script: 'C:\opscode\chef-workstation\bin\chef install'
@@ -36,9 +31,13 @@ steps:
     workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chef_chocolatey/'
   env:
     CHEF_LICENSE: accept
+    PATH: C:\opscode\chef-workstation\bin\
     
 - task: CmdLine@2
   displayName: Run Chef-Client
   inputs:
     script: 'C:\opscode\chef-workstation\bin\chef-client -z'
     workingDirectory: '$(Build.Repository.LocalPath)/zero_repo'
+  env:
+    CHEF_LICENSE: accept
+    PATH: C:\opscode\chef-workstation\bin\
