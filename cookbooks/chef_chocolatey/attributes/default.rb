@@ -4,6 +4,9 @@ default['chef_chocolatey'] = {
   ],
   'updates' => [
     'vlc'
+  ],
+  'managed_updates' => [
+    'git'
   ]
 }
 default['chocolatey'] = {
