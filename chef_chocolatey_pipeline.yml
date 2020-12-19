@@ -16,6 +16,11 @@ steps:
     component: chef-workstation
 
 - task: CmdLine@2
+  displayName: Add Chef-Workstation to Path
+  inputs:
+    script: 'set PATH=%PATH%;C:\opscode\chef-workstation\bin\'
+
+- task: CmdLine@2
   displayName: Install Chef PolicyFile
   inputs:
     script: 'C:\opscode\chef-workstation\bin\chef install'
