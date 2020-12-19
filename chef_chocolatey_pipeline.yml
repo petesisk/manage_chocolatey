@@ -31,7 +31,7 @@ steps:
     
 - task: CmdLine@2
   inputs:
-    script: 'chef-client -z'
+    script: 'C:\opscode\chefdk\bin\chef-client -z'
     workingDirectory: '$(Build.Repository.LocalPath)/zero_repo'
 
 # - task: CmdLine@2
