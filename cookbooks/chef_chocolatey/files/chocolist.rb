@@ -6,7 +6,8 @@ Ohai.plugin :ChocoList do
   collect_data(:windows) do
     chocolist Mash.new
     chocolist['packages'] = []
-    cmd = Mixlib::ShellOut.new('clist -lo -r --id-only')
+
+    cmd = Mixlib::ShellOut.new('C:/programdata/chocolatey/bin/clist.exe -lo -r --id-only')
     cmd.run_command
     chocolist['packages'] = cmd.stdout.split("\r\n")
   end
