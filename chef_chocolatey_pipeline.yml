@@ -18,7 +18,7 @@ steps:
 - task: CmdLine@2
   displayName: Install Chef PolicyFile
   inputs:
-    script: 'C:\opscode\chefdk\bin\chef install'
+    script: 'C:\opscode\chef-workstation\bin\chef install'
     workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chef_chocolatey/'
   env:
     CHEF_LICENSE: accept
@@ -26,7 +26,7 @@ steps:
 - task: CmdLine@2
   displayName: Export Chef PolicyFile
   inputs:
-    script: 'C:\opscode\chefdk\bin\chef export $(Build.Repository.LocalPath)/zero_repo'
+    script: 'C:\opscode\chef-workstation\bin\chef export $(Build.Repository.LocalPath)/zero_repo'
     workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chef_chocolatey/'
   env:
     CHEF_LICENSE: accept
@@ -34,5 +34,5 @@ steps:
 - task: CmdLine@2
   displayName: Run Chef-Client
   inputs:
-    script: 'C:\opscode\chefdk\bin\chef-client -z'
+    script: 'C:\opscode\chef-workstation\bin\chef-client -z'
     workingDirectory: '$(Build.Repository.LocalPath)/zero_repo'
