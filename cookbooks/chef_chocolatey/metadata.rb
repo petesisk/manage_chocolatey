@@ -9,3 +9,4 @@ issues_url 'https://github.com/petesisk/chef_chocolatey/issues'
 source_url 'https://github.com/petesisk/chef_chocolatey'
 
 depends 'chocolatey'
+depends 'ohai'
