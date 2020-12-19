@@ -7,5 +7,5 @@ default['chef_chocolatey'] = {
   ]
 }
 default['chocolatey'] = {
-  'sensitive' => false
+  'sensitive' => true
 }
