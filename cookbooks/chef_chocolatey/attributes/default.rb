@@ -21,10 +21,6 @@ default['chef_chocolatey'] = {
     'logValidationResultsOnWarnings',
     'usePackageRepositoryOptimizations',
     'usePackageExitCodes',
-    # Business Version features from here ---->>
-    'virusCheck',
-    'downloadCache',
-    'allowSynchronization'
   ],
   'disabled_features' => [
     'exitOnRebootDetected',
