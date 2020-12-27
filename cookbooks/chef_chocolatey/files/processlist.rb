@@ -7,7 +7,7 @@ Ohai.plugin :Processlist do
     processlist Mash.new
     processlist['names'] = []
 
-    cmd = Mixlib::ShellOut.new('powershell.exe -Command "(get-process).Name"')
+    cmd = Mixlib::ShellOut.new('powershell.exe -NoLogo -NonInteractive -NoProfile -Command "(get-process).Name"')
     cmd.run_command
     processlist['names'] = cmd.stdout.split("\r\n")
     processlist['names'] = processlist['names'].uniq
