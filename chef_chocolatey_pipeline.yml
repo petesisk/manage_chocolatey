@@ -6,10 +6,16 @@ pool:
 
 steps:
 
-- task: chef-software.chef-azdo.install.component@3
-  displayName: Install Chef Component
+# - task: chef-software.chef-azdo.install.component@3
+#   displayName: Install Chef Component
+#   inputs:
+#     component: chef-workstation
+
+- task: PowerShell@2
+  displayName: Install Chef Workstation
   inputs:
-    component: chef-workstation
+    targetType: 'inline'
+    script: '. { iwr -useb https://omnitruck.chef.io/install.ps1 } | iex; install -project chef-workstation'
 
 - task: CmdLine@2
   displayName: Install Chef PolicyFile
