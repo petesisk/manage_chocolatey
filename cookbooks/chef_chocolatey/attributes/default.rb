@@ -1,12 +1,18 @@
 default['chef_chocolatey'] = {
   'installs' => [
-    'googlechrome'
+    'putty'
   ],
   'updates' => [
     'vlc'
   ],
   'managed_updates' => [
     'git'
+  ],
+  'safe_updates' => [
+    [
+      'googlechrome', 'lolpants_process',
+      'firefox', 'firefox_process'
+    ],
   ],
   'source' => '',
   'source_name' => '',
@@ -49,5 +55,8 @@ default['chef_chocolatey'] = {
 }
 default['chocolatey'] = {
   'sensitive' => true,
-  'upgrade' => false
+  'upgrade' => false,
+  'install_vars' => {
+    'chocolateyVersion' => '0.10.5'
+  }
 }

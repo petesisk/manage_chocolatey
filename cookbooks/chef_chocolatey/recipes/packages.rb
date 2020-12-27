@@ -19,7 +19,12 @@ end
 node['chef_chocolatey']['managed_updates'].each do |name|
   chocolatey_package name do
     action :upgrade
-    only_if { node['chocolist']['packages'].include?(name) } 
+    only_if { node['chocolist']['packages'].include?(name) }
     returns [0, 3010]
   end
+end
+
+node['chef_chocolatey']['safe_updates'].each do |name, process|
+  log "name = #{name}"
+  log "process = #{process}"
 end
