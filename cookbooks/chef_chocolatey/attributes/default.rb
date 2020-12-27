@@ -13,7 +13,7 @@ default['chef_chocolatey'] = {
       'googlechrome', 'lolpants_process'
     ],
     [
-      'lols', 'lols_process'
+      '7zip', 'lols_process'
     ],
   ],
   'source' => '',

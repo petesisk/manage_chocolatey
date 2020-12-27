@@ -1,6 +1,7 @@
 ohai_plugin 'chocolist'
+ohai_plugin 'processlist'
 
-log node['chocolist']['packages']
+log node['processlist']
 
 node['chef_chocolatey']['installs'].each do |name|
   chocolatey_package name do
@@ -25,6 +26,9 @@ node['chef_chocolatey']['managed_updates'].each do |name|
 end
 
 node['chef_chocolatey']['safe_updates'].each do |name, process|
-  log "name = #{name}"
-  log "process = #{process}"
+  chocolatey_package name do
+    action :upgrade
+    only_if { node['processlist'].include?(process) }
+    returns [0, 3010]
+  end
 end
