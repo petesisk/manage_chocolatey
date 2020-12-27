@@ -4,12 +4,11 @@ Ohai.plugin :processlist do
   provides 'processlist'
 
   collect_data(:windows) do
-    # processlist Mash.new
-    # processlist['names'] = []
+    processlist Mash.new
+    processlist['names'] = []
 
-    cmd = Mixlib::ShellOut.new('TASKLIST /s')
+    cmd = Mixlib::ShellOut.new('dir')
     cmd.run_command
-    processlist = cmd.stdout
+    processlist['names'] = cmd.stdout.split("\r\n")
   end
 end
-# TASKLIST /v /fi "STATUS eq running"
