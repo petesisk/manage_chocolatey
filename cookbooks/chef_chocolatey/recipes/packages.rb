@@ -28,7 +28,7 @@ end
 node['chef_chocolatey']['safe_updates'].each do |name, process|
   chocolatey_package name do
     action :upgrade
-    only_if { node['processlist'].include?(process) }
+    only_if { node['processlist']['names'].include?(process) }
     returns [0, 3010]
   end
 end
