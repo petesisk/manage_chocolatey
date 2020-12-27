@@ -1,7 +1,7 @@
 ohai_plugin 'chocolist'
 ohai_plugin 'processlist'
 
-log node['processlist']['names']
+log node['processlist']
 
 node['chef_chocolatey']['installs'].each do |name|
   chocolatey_package name do
