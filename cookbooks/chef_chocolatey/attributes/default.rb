@@ -10,10 +10,10 @@ default['chef_chocolatey'] = {
   ],
   'safe_updates' => [
     [
-      'googlechrome', 'lolpants_process'
+      'googlechrome', 'svchost'
     ],
     [
-      '7zip', 'lols_process'
+      '7zip', '7zip'
     ],
   ],
   'source' => '',
