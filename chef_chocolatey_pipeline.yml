@@ -6,39 +6,34 @@ pool:
 
 steps:
 
-- task: PowerShell@2
+- task: chef-software.chef-azdo.install.component@3
+  displayName: Install Chef Component
   inputs:
-    targetType: 'inline'
-    script: '. { iwr -useb https://omnitruck.chef.io/install.ps1 } | iex; install'
-
-# - task: chef-software.chef-azdo.install.component@3
-#   displayName: Install Chef Component
-#   inputs:
-#     component: chef-workstation
+    component: chef-workstation
 
 - task: CmdLine@2
   displayName: Install Chef PolicyFile
   inputs:
-    script: 'C:\opscode\chef\bin\chef install'
+    script: 'C:\opscode\chef-workstation\bin\chef install'
     workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chef_chocolatey/'
   env:
     CHEF_LICENSE: accept
-    PATH: C:\opscode\chef\bin\
+    PATH: C:\opscode\chef-workstation\bin\
 
 - task: CmdLine@2
   displayName: Export Chef PolicyFile
   inputs:
-    script: 'C:\opscode\chef\bin\chef export $(Build.Repository.LocalPath)/zero_repo'
+    script: 'C:\opscode\chef-workstation\bin\chef export $(Build.Repository.LocalPath)/zero_repo'
     workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chef_chocolatey/'
   env:
     CHEF_LICENSE: accept
-    PATH: C:\opscode\chef\bin\
+    PATH: C:\opscode\chef-workstation\bin\
     
 - task: CmdLine@2
   displayName: Run Chef-Client
   inputs:
-    script: 'C:\opscode\chef\bin\chef-client -z'
+    script: 'C:\opscode\chef-workstation\bin\chef-client -z'
     workingDirectory: '$(Build.Repository.LocalPath)/zero_repo'
   env:
     CHEF_LICENSE: accept
-    PATH: C:\opscode\chef\bin\
+    PATH: C:\opscode\chef-workstation\bin\
