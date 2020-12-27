@@ -9,10 +9,8 @@ default['chef_chocolatey'] = {
     'git'
   ],
   'safe_updates' => [
-    [
-      'googlechrome', 'lolpants_process',
-      'firefox', 'firefox_process'
-    ],
+    'googlechrome', 'lolpants_process',
+    'firefox', 'firefox_process'
   ],
   'source' => '',
   'source_name' => '',
