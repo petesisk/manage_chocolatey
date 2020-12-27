@@ -1,23 +1,31 @@
 default['chef_chocolatey'] = {
+  # installs is a list of packages that will be installed (but not updated)
   'installs' => [
     'putty'
   ],
+  # updates is a list of packages that will be installed AND updated
   'updates' => [
     'vlc'
   ],
+  # managed_updates are packages that will be updated only if already installed
   'managed_updates' => [
     'git'
   ],
+  # safe_updates are only updated if the specified process is not running
+  # this prevents updates that would cause an application to quit during use
+  # the format to use is 'package', 'process'
   'safe_updates' => [
     [
-      'googlechrome', 'svchost'
-    ],
-    [
-      '7zip', '7zip'
+      'zoom', 'zoom'
     ],
   ],
+  # configures a private chocolatey repo
+  # if these settings are not provided, the public chocolatey feed is used
+  'private_feed' => false,
   'source' => '',
   'source_name' => '',
+  # a list of chocolatey features that are set to enabled
+  # https://docs.chocolatey.org/en-us/configuration
   'enabled_features' => [
     'checksumFiles',
     'autoUninstaller',
@@ -30,6 +38,7 @@ default['chef_chocolatey'] = {
     'usePackageRepositoryOptimizations',
     'usePackageExitCodes',
   ],
+  # a list of chocolatey features that are set to disabled
   'disabled_features' => [
     'exitOnRebootDetected',
     'failOnAutoUninstaller',
@@ -46,15 +55,10 @@ default['chef_chocolatey'] = {
     'skipPackageUpgradesWhenNotInstalled',
     'logWithoutColor',
     'scriptsCheckLastExitCode'
-  ],
-  'gui_features' => [
-    'DefaultToTileViewForLocalSource',
-    'DefaultToTileViewForRemoteSource',
-    'UseDelayedSearch',
-    'ExcludeInstalledPackages',
-    'ShowAggregatedSourceView'
   ]
 }
+# attributes that configure the chocolatey community cookbook
+# https://github.com/chocolatey-community/chocolatey-cookbook
 default['chocolatey'] = {
   'sensitive' => true,
   'upgrade' => false,
