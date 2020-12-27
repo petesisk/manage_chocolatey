@@ -11,7 +11,7 @@ node['chef_chocolatey']['disabled_features'].each do |feature|
 end
 
 if node['chef_chocolatey']['private_feed'] == true
-  if node['chef_chocolatey'].attribute?('source') && node['chef_chocolatey'].attribute?('source_name')
+  if !node['chef_chocolatey']['source'].empty? && !node['chef_chocolatey']['source_name'].empty?
     chocolatey_source node['chef_chocolatey']['source_name'] do
       source node['chef_chocolatey']['source']
       action :add
