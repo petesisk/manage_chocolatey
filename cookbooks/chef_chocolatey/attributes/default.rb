@@ -21,7 +21,9 @@ default['chef_chocolatey'] = {
   ],
   # configures a private chocolatey repo
   # if these settings are not provided, the public chocolatey feed is used
+  # we can also disable the public chocolatey feed
   'private_feed' => false,
+  'disable_public_feed' => false,
   'source' => '',
   'source_name' => '',
   # a list of chocolatey features that are set to enabled
