@@ -9,7 +9,7 @@ Ohai.plugin :processlist do
 
     cmd = Mixlib::ShellOut.new('TASKLIST /s')
     cmd.run_command
-    processlist['names'] = cmd.stdout
+    processlist = cmd.stdout
   end
 end
 # TASKLIST /v /fi "STATUS eq running"
