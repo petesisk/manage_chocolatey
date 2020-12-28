@@ -1,4 +1,4 @@
-deployment_group 'chef_chocolatey'
+deployment_group 'chocolatey_packages'
 policy_document_native_api false
 use_policyfile true
 versioned_cookbooks true

@@ -3,6 +3,6 @@ provisioner:
   name: chef_zero
 
 suites:
-  - name: chef_chocolatey
+  - name: chocolatey_packages
     provisioner:
       policyfile: ./Policyfile.rb

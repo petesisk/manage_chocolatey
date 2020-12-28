@@ -1,4 +1,4 @@
-default['chef_chocolatey'] = {
+default['chocolatey_packages'] = {
   # installs is a list of packages that will be installed (but not updated)
   'installs' => [
     'putty'

@@ -1,12 +1,12 @@
 #
-# Cookbook:: chef_chocolatey
+# Cookbook:: chocolatey_packages
 # Spec:: default
 #
 # Copyright:: 2020, The Authors, All Rights Reserved.
 
 require 'spec_helper'
 
-describe 'chef_chocolatey::default' do
+describe 'chocolatey_packages::default' do
   context 'When all attributes are default, on Ubuntu 20.04' do
     # for a complete list of available platforms and versions see:
     # https://github.com/chefspec/fauxhai/blob/master/PLATFORMS.md
