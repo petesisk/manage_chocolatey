@@ -21,7 +21,7 @@ steps:
   displayName: Install Chef PolicyFile
   inputs:
     script: 'C:\opscode\chef-workstation\bin\chef install'
-    workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chocolatey_packages/'
+    workingDirectory: '$(Build.Repository.LocalPath)'
   env:
     CHEF_LICENSE: accept
     PATH: C:\opscode\chef-workstation\bin\
@@ -30,7 +30,7 @@ steps:
   displayName: Export Chef PolicyFile
   inputs:
     script: 'C:\opscode\chef-workstation\bin\chef export $(Build.Repository.LocalPath)/zero_repo'
-    workingDirectory: '$(Build.Repository.LocalPath)/cookbooks/chocolatey_packages/'
+    workingDirectory: '$(Build.Repository.LocalPath)'
   env:
     CHEF_LICENSE: accept
     PATH: C:\opscode\chef-workstation\bin\
