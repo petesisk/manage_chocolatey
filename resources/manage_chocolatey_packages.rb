@@ -10,6 +10,15 @@ action :manage do
   return unless platform_family?('windows')
 
   return_codes = node['chocolatey_packages']['return_codes']
+  choco_list = shell_out(
+    'C:/programdata/chocolatey/bin/clist.exe -lo -r --id-only',
+  ).stdout
+  process_list = powershell_out(
+    '(Get-Process).Name',
+  ).stdout
+  
+  Chef::Log.info(choco_list)
+  Chef::Log.info(process_list)
 
   unless node['chocolatey_packages']['installs'].empty?
 
@@ -38,7 +47,7 @@ action :manage do
     node['chocolatey_packages']['managed_updates'].uniq.each do |name|
       chocolatey_package name do
         action :upgrade
-        only_if { node['chocolist']['packages'].include?(name) }
+        only_if { choco_list.include?(name) }
         returns return_codes
         only_if { new_resource.managed_updates }
       end
@@ -50,7 +59,7 @@ action :manage do
     node['chocolatey_packages']['safe_updates'].uniq.each do |name, process|
       chocolatey_package name do
         action :upgrade
-        not_if { node['processlist']['names'].include?(process) }
+        not_if { process_list.include?(process) }
         returns return_codes
         only_if { new_resource.safe_updates }
       end
