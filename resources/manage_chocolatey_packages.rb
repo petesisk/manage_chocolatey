@@ -16,9 +16,6 @@ action :manage do
   process_list = powershell_out(
     '(Get-Process).Name',
   ).stdout
-  
-  Chef::Log.info(choco_list)
-  Chef::Log.info(process_list)
 
   unless node['chocolatey_packages']['installs'].empty?
 
