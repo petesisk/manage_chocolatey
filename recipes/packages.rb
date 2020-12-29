@@ -16,10 +16,10 @@ ohai_plugin 'processlist'
 # end
 
 manage_chocolatey_packages 'magic' do
-  installs :true
-  updates :true
-  managed_updates :true
-  safe_updates :false
+  installs true
+  updates true
+  managed_updates true
+  safe_updates false
 end
 
 # node['chocolatey_packages']['managed_updates'].each do |name|
