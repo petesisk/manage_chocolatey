@@ -43,3 +43,12 @@ steps:
   env:
     CHEF_LICENSE: accept
     PATH: C:\opscode\chef-workstation\bin\
+
+- task: CmdLine@2
+  displayName: Run Chef-Client
+  inputs:
+    script: 'C:\opscode\chef-workstation\bin\chef-client -z'
+    workingDirectory: '$(Build.Repository.LocalPath)/zero_repo'
+  env:
+    CHEF_LICENSE: accept
+    PATH: C:\opscode\chef-workstation\bin\
