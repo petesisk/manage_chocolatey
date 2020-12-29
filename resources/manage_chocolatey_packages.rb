@@ -26,4 +26,26 @@ action :manage do
       end
     end
   end
+
+  unless node['chocolatey_packages']['managed_updates'].empty?
+
+    node['chocolatey_packages']['managed_updates'].uniq.each do |name|
+      chocolatey_package name do
+        action :upgrade
+        only_if { node['chocolist']['packages'].include?(name) }
+        returns return_codes
+      end
+    end
+  end
+
+  unless node['chocolatey_packages']['safe_updates'].empty?
+
+    node['chocolatey_packages']['safe_updates'].uniq.each do |name, process|
+      chocolatey_package name do
+        action :upgrade
+        not_if { node['processlist']['names'].include?(process) }
+        returns return_codes
+      end
+    end
+  end
 end
