@@ -1,15 +1,34 @@
+#
+# Cookbook:: chocolatey_packages
+# Attributes:: default
+#
+# Copyright 2021, Peter Sisk
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
 default['chocolatey_packages'] = {
   # installs is a list of packages that will be installed (but not updated)
   'installs' => [
-    'putty'
+    'googlechrome'
   ],
   # updates is a list of packages that will be installed AND updated
   'updates' => [
-    'vlc'
+    'git'
   ],
   # managed_updates are packages that will be updated only if already installed
   'managed_updates' => [
-    'git'
+    'firefox'
   ],
   # safe_updates are only updated if the specified process is not running
   # this prevents updates that would cause an application to quit during use
