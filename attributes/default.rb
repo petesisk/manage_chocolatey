@@ -57,7 +57,8 @@ default['chocolatey_packages'] = {
     'skipPackageUpgradesWhenNotInstalled',
     'logWithoutColor',
     'scriptsCheckLastExitCode'
-  ]
+  ],
+  'return_codes' => [ 0, 3010 ]
 }
 # attributes that configure the chocolatey community cookbook
 # https://github.com/chocolatey-community/chocolatey-cookbook

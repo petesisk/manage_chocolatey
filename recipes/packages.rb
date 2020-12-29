@@ -1,19 +1,21 @@
 ohai_plugin 'chocolist'
 ohai_plugin 'processlist'
 
-node['chocolatey_packages']['installs'].each do |name|
-  chocolatey_package name do
-    action :install
-    returns [0, 3010]
-  end
-end
+# node['chocolatey_packages']['installs'].each do |name|
+#   chocolatey_package name do
+#     action :install
+#     returns [0, 3010]
+#   end
+# end
 
-node['chocolatey_packages']['updates'].each do |name|
-  chocolatey_package name do
-    action :upgrade
-    returns [0, 3010]
-  end
-end
+# node['chocolatey_packages']['updates'].each do |name|
+#   chocolatey_package name do
+#     action :upgrade
+#     returns [0, 3010]
+#   end
+# end
+
+manage_chocolatey_packages
 
 node['chocolatey_packages']['managed_updates'].each do |name|
   chocolatey_package name do
