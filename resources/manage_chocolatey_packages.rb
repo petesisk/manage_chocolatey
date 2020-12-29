@@ -17,7 +17,7 @@ action :manage do
       chocolatey_package name do
         action :install
         returns return_codes
-        not_if new_resource.installs == false
+        only_if { new_resource.installs }
       end
     end
   end
@@ -28,7 +28,7 @@ action :manage do
       chocolatey_package name do
         action :upgrade
         returns return_codes
-        not_if new_resource.updates == false
+        only_if { new_resource.updates }
       end
     end
   end
@@ -40,7 +40,7 @@ action :manage do
         action :upgrade
         only_if { node['chocolist']['packages'].include?(name) }
         returns return_codes
-        not_if new_resource.managed_updates == false
+        only_if { new_resource.managed_updates }
       end
     end
   end
@@ -52,7 +52,7 @@ action :manage do
         action :upgrade
         not_if { node['processlist']['names'].include?(process) }
         returns return_codes
-        not_if new_resource.safe_updates == false
+        only_if { new_resource.safe_updates }
       end
     end
   end
