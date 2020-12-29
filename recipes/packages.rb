@@ -15,7 +15,7 @@ ohai_plugin 'processlist'
 #   end
 # end
 
-manage_chocolatey_packages
+manage_chocolatey_packages 'magic'
 
 node['chocolatey_packages']['managed_updates'].each do |name|
   chocolatey_package name do
