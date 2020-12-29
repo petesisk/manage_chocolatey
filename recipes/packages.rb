@@ -17,18 +17,18 @@ ohai_plugin 'processlist'
 
 manage_chocolatey_packages 'magic'
 
-node['chocolatey_packages']['managed_updates'].each do |name|
-  chocolatey_package name do
-    action :upgrade
-    only_if { node['chocolist']['packages'].include?(name) }
-    returns [0, 3010]
-  end
-end
+# node['chocolatey_packages']['managed_updates'].each do |name|
+#   chocolatey_package name do
+#     action :upgrade
+#     only_if { node['chocolist']['packages'].include?(name) }
+#     returns [0, 3010]
+#   end
+# end
 
-node['chocolatey_packages']['safe_updates'].each do |name, process|
-  chocolatey_package name do
-    action :upgrade
-    not_if { node['processlist']['names'].include?(process) }
-    returns [0, 3010]
-  end
-end
+# node['chocolatey_packages']['safe_updates'].each do |name, process|
+#   chocolatey_package name do
+#     action :upgrade
+#     not_if { node['processlist']['names'].include?(process) }
+#     returns [0, 3010]
+#   end
+# end
