@@ -33,7 +33,7 @@ action :manage do
     node['chocolatey_packages']['enabled_features'].each do |feature|
       chocolatey_feature feature do
         action :enable
-        only_if { enable_features.installs }
+        only_if { new_resource.enable_features }
       end
     end
   end
@@ -43,7 +43,7 @@ action :manage do
     node['chocolatey_packages']['disabled_features'].each do |feature|
       chocolatey_feature feature do
         action :disable
-        only_if { disable_features.installs }
+        only_if { new_resource.disable_features }
       end
     end
   end
@@ -53,7 +53,7 @@ action :manage do
     node['chocolatey_packages']['config_settings'].each do |name, config_value|
       chocolatey_config name do
         value config_value
-        only_if { configure_settings.installs }
+        only_if { new_resource.configure_settings }
       end
     end
   end
@@ -65,7 +65,7 @@ action :manage do
         admin_only source.admin_only
         source source.allow_self_service
         action :add
-        only_if { configure_sources.installs }
+        only_if { new_resource.configure_sources }
       end
     end
   end
@@ -74,6 +74,6 @@ action :manage do
     source 'https://chocolatey.org/api/v2/'
     action :disable
     only_if { node['chocolatey_packages']['disable_public_feed'] }
-    only_if { configure_sources.installs }
+    only_if { new_resource.configure_sources }
   end
 end
