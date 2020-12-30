@@ -22,4 +22,5 @@ manage_chocolatey_packages 'magic' do
   updates true
   managed_updates true
   safe_updates true
+  ignore_failure false
 end

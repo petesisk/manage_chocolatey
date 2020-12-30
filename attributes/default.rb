@@ -32,7 +32,7 @@ default['chocolatey_packages'] = {
   ],
   # safe_updates are only updated if the specified process is not running
   # this prevents updates that would cause an application to quit during use
-  # the format to use is 'package', 'process'
+  # the format to use is 'packagename', 'processname'
   'safe_updates' => [
     [
       'zoom', 'zoom'
@@ -41,10 +41,22 @@ default['chocolatey_packages'] = {
   # configures a private chocolatey repo
   # if these settings are not provided, the public chocolatey feed is used
   # we can also disable the public chocolatey feed
-  'private_feed' => false,
   'disable_public_feed' => false,
-  'source' => '',
-  'source_name' => '',
+  'private_feed' => true,
+  'sources' => {
+    'one' => {
+      'source_name' => 'sourceone',
+      'source_url' => 'https://sourceone.com',
+      'admin_only' => true,
+      'allow_self_service' => false
+    },
+    'two' => {
+      'source_name' => 'sourcetwo',
+      'source_url' => 'https://sourcetwo.com',
+      'admin_only' => false,
+      'allow_self_service' => true
+    }
+  },
   # a list of chocolatey features that are set to enabled
   # https://docs.chocolatey.org/en-us/configuration
   'enabled_features' => [
@@ -57,7 +69,7 @@ default['chocolatey_packages'] = {
     'removePackageInformationOnUninstall',
     'logValidationResultsOnWarnings',
     'usePackageRepositoryOptimizations',
-    'usePackageExitCodes',
+    'usePackageExitCodes'
   ],
   # a list of chocolatey features that are set to disabled
   'disabled_features' => [
@@ -77,7 +89,13 @@ default['chocolatey_packages'] = {
     'logWithoutColor',
     'scriptsCheckLastExitCode'
   ],
-  'return_codes' => [ 0, 3010 ]
+  # chocolatey config settings
+  'config_settings' => [
+    'cacheLocation' => '',
+    'commandExecutionTimeoutSeconds' => '14400'
+  ],
+  'ignore_failure' => false,
+  'return_codes' => [0, 3010]
 }
 # attributes that configure the chocolatey community cookbook
 # https://github.com/chocolatey-community/chocolatey-cookbook

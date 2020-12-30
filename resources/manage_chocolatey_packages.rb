@@ -24,6 +24,7 @@ property :installs, [true, false], default: true
 property :updates, [true, false], default: true
 property :managed_updates, [true, false], default: true
 property :safe_updates, [true, false], default: true
+property :ignore_failure, [true, false], default: false
 
 action :manage do
   return unless platform_family?('windows')
@@ -42,6 +43,7 @@ action :manage do
       chocolatey_package name do
         action :install
         returns return_codes
+        ignore_failure new_resource.ignore_failure
         only_if { new_resource.installs }
       end
     end
@@ -53,6 +55,7 @@ action :manage do
       chocolatey_package name do
         action :upgrade
         returns return_codes
+        ignore_failure new_resource.ignore_failure
         only_if { new_resource.updates }
       end
     end
@@ -65,6 +68,7 @@ action :manage do
         action :upgrade
         only_if { choco_list.include?(name) }
         returns return_codes
+        ignore_failure new_resource.ignore_failure
         only_if { new_resource.managed_updates }
       end
     end
@@ -77,6 +81,7 @@ action :manage do
         action :upgrade
         not_if { process_list.include?(process) }
         returns return_codes
+        ignore_failure new_resource.ignore_failure
         only_if { new_resource.safe_updates }
       end
     end
