@@ -39,7 +39,7 @@ jobs:
       - name: Export Chef PolicyFile
         shell: pwsh
         run: |
-          C:\opscode\chef-workstation\bin\chef export $($GITHUB_WORKSPACE)/zero_repo
+          C:\opscode\chef-workstation\bin\chef export $GITHUB_WORKSPACE/zero_repo
         env:
           CHEF_LICENSE: accept
           PATH: C:\opscode\chef-workstation\bin\
@@ -48,6 +48,7 @@ jobs:
         shell: pwsh
         run: |
           C:\opscode\chef-workstation\bin\chef-client -z
+        working-directory: $GITHUB_WORKSPACE/zero_repo
         env:
           CHEF_LICENSE: accept
           PATH: C:\opscode\chef-workstation\bin\
