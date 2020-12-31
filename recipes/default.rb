@@ -26,7 +26,7 @@ manage_chocolatey_configuration 'magic' do
   configure_sources true
 end
 
-manage_manage_chocolatey 'magic' do
+manage_chocolatey_packages 'magic' do
   installs true
   updates true
   managed_updates true

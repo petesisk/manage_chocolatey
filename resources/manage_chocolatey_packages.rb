@@ -1,6 +1,6 @@
 #
 # Cookbook:: manage_chocolatey
-# Resource:: manage_manage_chocolatey
+# Resource:: manage_chocolatey_packages
 #
 # Copyright 2021, Peter Sisk
 #
@@ -17,8 +17,8 @@
 # limitations under the License.
 #
 
-resource_name :manage_manage_chocolatey
-provides :manage_manage_chocolatey, :os => 'windows'
+resource_name :manage_chocolatey_packages
+provides :manage_chocolatey_packages, :os => 'windows'
 default_action :manage
 property :installs, [true, false], default: true
 property :updates, [true, false], default: true
