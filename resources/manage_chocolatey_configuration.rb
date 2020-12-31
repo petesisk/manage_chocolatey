@@ -73,9 +73,16 @@ action :manage do
     end
   end
 
+  source_action =
+    if node['manage_chocolatey']['disable_public_feed'] == true
+      :disable
+    else
+      :enable
+    end
+
   chocolatey_source 'chocolatey' do
     source 'https://chocolatey.org/api/v2/'
-    action :disable
+    action source_action
     only_if { node['manage_chocolatey']['disable_public_feed'] }
     only_if { new_resource.configure_sources }
   end
