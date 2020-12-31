@@ -23,7 +23,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: PowerShell script
-        uses: Amadevus/pwsh-script@v2.0.0
+      - uses: Amadevus/pwsh-script@v2
+        id: script
         with:
-          script: '. { iwr -useb https://omnitruck.chef.io/install.ps1 } | iex; install -project chef-workstation'
+          script: |
+            . { iwr -useb https://omnitruck.chef.io/install.ps1 } | iex; install -project chef-workstation
