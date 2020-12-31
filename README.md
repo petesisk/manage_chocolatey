@@ -1,1 +1,1 @@
-# chocolatey_packages
+# manage_chocolatey

@@ -1,5 +1,5 @@
 #
-# Cookbook:: chocolatey_packages
+# Cookbook:: manage_chocolatey
 # Attributes:: default
 #
 # Copyright 2021, Peter Sisk
@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-default['chocolatey_packages'] = {
+default['manage_chocolatey'] = {
   # installs is a list of packages that will be installed (but not updated)
   'installs' => [
     'googlechrome'
@@ -31,12 +31,12 @@ default['chocolatey_packages'] = {
     'firefox'
   ],
   # safe_updates are only updated if the specified process is not running
-  # this prevents updates that would cause an application to quit during use
-  # the format to use is 'packagename', 'processname'
+  # this prevents updates that would fail or cause an app to quit during use
   'safe_updates' => [
-    [
-      'zoom', 'zoom'
-    ],
+    {
+      'package_name' => 'zoom',
+      'process_name' => 'zoom'
+    },
   ],
   # configures a private chocolatey repo
   # if these settings are not provided, the public chocolatey feed is used

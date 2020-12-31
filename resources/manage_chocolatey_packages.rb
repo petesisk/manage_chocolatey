@@ -1,6 +1,6 @@
 #
-# Cookbook:: chocolatey_packages
-# Resource:: manage_chocolatey_packages
+# Cookbook:: manage_chocolatey
+# Resource:: manage_manage_chocolatey
 #
 # Copyright 2021, Peter Sisk
 #
@@ -17,8 +17,8 @@
 # limitations under the License.
 #
 
-resource_name :manage_chocolatey_packages
-provides :manage_chocolatey_packages, :os => 'windows'
+resource_name :manage_manage_chocolatey
+provides :manage_manage_chocolatey, :os => 'windows'
 default_action :manage
 property :installs, [true, false], default: true
 property :updates, [true, false], default: true
@@ -29,7 +29,7 @@ property :ignore_failure, [true, false], default: false
 action :manage do
   return unless platform_family?('windows')
 
-  return_codes = node['chocolatey_packages']['return_codes']
+  return_codes = node['manage_chocolatey']['return_codes']
   choco_list = shell_out(
     'C:/programdata/chocolatey/bin/clist.exe -lo -r --id-only',
   ).stdout
@@ -37,9 +37,9 @@ action :manage do
     '(Get-Process).Name',
   ).stdout
 
-  unless node['chocolatey_packages']['installs'].empty?
+  unless node['manage_chocolatey']['installs'].empty?
 
-    node['chocolatey_packages']['installs'].uniq.each do |name|
+    node['manage_chocolatey']['installs'].uniq.each do |name|
       chocolatey_package name do
         action :install
         returns return_codes
@@ -49,9 +49,9 @@ action :manage do
     end
   end
 
-  unless node['chocolatey_packages']['updates'].empty?
+  unless node['manage_chocolatey']['updates'].empty?
 
-    node['chocolatey_packages']['updates'].uniq.each do |name|
+    node['manage_chocolatey']['updates'].uniq.each do |name|
       chocolatey_package name do
         action :upgrade
         returns return_codes
@@ -61,9 +61,9 @@ action :manage do
     end
   end
 
-  unless node['chocolatey_packages']['managed_updates'].empty?
+  unless node['manage_chocolatey']['managed_updates'].empty?
 
-    node['chocolatey_packages']['managed_updates'].uniq.each do |name|
+    node['manage_chocolatey']['managed_updates'].uniq.each do |name|
       chocolatey_package name do
         action :upgrade
         only_if { choco_list.include?(name) }
@@ -74,9 +74,9 @@ action :manage do
     end
   end
 
-  unless node['chocolatey_packages']['safe_updates'].empty?
+  unless node['manage_chocolatey']['safe_updates'].empty?
 
-    node['chocolatey_packages']['safe_updates'].uniq.each do |name, process|
+    node['manage_chocolatey']['safe_updates'].uniq.each do |name, process|
       chocolatey_package name do
         action :upgrade
         not_if { process_list.include?(process) }
