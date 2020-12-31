@@ -65,6 +65,8 @@ action :manage do
         source source['source_url']
         admin_only source['admin_only'] if !source['admin_only'].nil?
         allow_self_service source['allow_self_service'] if !source['allow_self_service'].nil?
+        bypass_proxy source['bypass_proxy'] if !source['bypass_proxy'].nil?
+        priority source['priority'] if !source['priority'].nil?
         action :add
         only_if { new_resource.configure_sources }
       end

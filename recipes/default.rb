@@ -17,6 +17,23 @@
 # limitations under the License.
 #
 
-include_recipe 'chocolatey_packages::install'
-include_recipe 'chocolatey_packages::configure'
-include_recipe 'chocolatey_packages::packages'
+# include_recipe 'chocolatey_packages::install'
+# include_recipe 'chocolatey_packages::configure'
+# include_recipe 'chocolatey_packages::packages'
+
+include_recipe 'chocolatey'
+
+manage_chocolatey_configuration 'magic' do
+  enable_features true
+  disable_features true
+  configure_settings true
+  configure_sources true
+end
+
+manage_chocolatey_packages 'magic' do
+  installs true
+  updates true
+  managed_updates true
+  safe_updates true
+  ignore_failure false
+end
