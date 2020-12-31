@@ -43,20 +43,20 @@ default['chocolatey_packages'] = {
   # we can also disable the public chocolatey feed
   'disable_public_feed' => false,
   'private_feed' => true,
-  'sources' => {
-    'one' => {
+  'sources' => [
+    {
       'source_name' => 'sourceone',
       'source_url' => 'https://sourceone.com',
       'admin_only' => true,
       'allow_self_service' => false
     },
-    'two' => {
+    {
       'source_name' => 'sourcetwo',
       'source_url' => 'https://sourcetwo.com',
       'admin_only' => false,
       'allow_self_service' => true
     }
-  },
+  ],
   # a list of chocolatey features that are set to enabled
   # https://docs.chocolatey.org/en-us/configuration
   'enabled_features' => [
@@ -92,8 +92,12 @@ default['chocolatey_packages'] = {
   # chocolatey config settings
   'config_settings' => [
     {
-      'name' => 'commandExecutionTimeoutSeconds',
-      'value' => '14400'
+    'name' => 'commandExecutionTimeoutSeconds',
+    'value' => '14400'
+    },
+    {
+      'name' => 'cacheLocation',
+      'value' => 'C:\Windows\Temp'
     }
   ],
   'ignore_failure' => false,

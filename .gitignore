@@ -23,3 +23,5 @@ Policyfile.lock.json
 
 # various
 .vscode/*
+cookbooks/*
+nodes/*
