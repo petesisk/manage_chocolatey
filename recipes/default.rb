@@ -17,7 +17,12 @@
 # limitations under the License.
 #
 
+# the chocolatey cookbook handles chocolatey installation
+
 include_recipe 'chocolatey'
+
+# this resource manages chocolatey configuration
+# see ./resources/manage_chocolatey_configuration.rb
 
 manage_chocolatey_configuration 'magic' do
   enable_features true
@@ -26,6 +31,9 @@ manage_chocolatey_configuration 'magic' do
   configure_sources true
 end
 
+# this resource manages chocolatey packages
+# see ./resources/manage_chocolatey_packages.rb
+
 manage_chocolatey_packages 'magic' do
   installs true
   updates true
@@ -33,5 +41,9 @@ manage_chocolatey_packages 'magic' do
   safe_updates true
   ignore_failure false
 end
+
+# this is an example of a package being added to the installs list
+# we can do this using any chef conditional
+# we can also use this to control packages from other cookbooks
 
 node.default['manage_chocolatey']['installs'] << '7zip'

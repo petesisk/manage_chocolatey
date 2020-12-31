@@ -41,68 +41,41 @@ default['manage_chocolatey'] = {
   # configures a private chocolatey repo
   # if these settings are not provided, the public chocolatey feed is used
   # we can also disable the public chocolatey feed
-  'disable_public_feed' => false,
-  'private_feed' => true,
+  'private_feed' => false,
   'sources' => [
     {
-      'source_name' => 'sourceone',
-      'source_url' => 'https://sourceone.com',
-      'admin_only' => true,
+      'source_name' => '',
+      'source_url' => '',
+      'admin_only' => false,
       'allow_self_service' => false
     },
-    {
-      'source_name' => 'sourcetwo',
-      'source_url' => 'https://sourcetwo.com',
-      'admin_only' => false,
-      'allow_self_service' => true
-    }
   ],
+  # when using a private repo, you may wish to disable the public feed
+  'disable_public_feed' => false,
   # a list of chocolatey features that are set to enabled
   # https://docs.chocolatey.org/en-us/configuration
   'enabled_features' => [
-    'checksumFiles',
-    'autoUninstaller',
     'allowGlobalConfirmation',
-    'powershellHost',
-    'ignoreInvalidOptionsSwitches',
-    'showNonElevatedWarnings',
-    'removePackageInformationOnUninstall',
-    'logValidationResultsOnWarnings',
-    'usePackageRepositoryOptimizations',
-    'usePackageExitCodes'
   ],
   # a list of chocolatey features that are set to disabled
   'disabled_features' => [
-    'exitOnRebootDetected',
-    'failOnAutoUninstaller',
-    'failOnStandardError',
-    'allowEmptyChecksums',
-    'allowEmptyChecksumsSecure',
-    'logEnvironmentValues',
-    'failOnInvalidOrMissingLicense',
-    'useFipsCompliantChecksums',
     'showDownloadProgress',
-    'stopOnFirstPackageFailure',
-    'useRememberedArgumentsForUpgrades',
-    'ignoreUnfoundPackagesOnUpgradeOutdated',
-    'skipPackageUpgradesWhenNotInstalled',
-    'logWithoutColor',
-    'scriptsCheckLastExitCode'
   ],
   # chocolatey config settings
   'config_settings' => [
     {
-    'name' => 'commandExecutionTimeoutSeconds',
-    'value' => '14400'
+      'name' => 'commandExecutionTimeoutSeconds',
+      'value' => '14400'
     },
-    {
-      'name' => 'cacheLocation',
-      'value' => 'C:\Windows\Temp'
-    }
   ],
+  # chef will ignore any package failures and move on to the next
+  # without this setting, a failing package would end the chef run
   'ignore_failure' => false,
+  # set the allowed exit codes for packages
+  # without this setting, a 3010 exit code would fail the chef run
   'return_codes' => [0, 3010]
 }
+
 # attributes that configure the chocolatey community cookbook
 # https://github.com/chocolatey-community/chocolatey-cookbook
 default['chocolatey'] = {
