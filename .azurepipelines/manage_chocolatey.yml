@@ -6,11 +6,6 @@ pool:
 
 steps:
 
-# - task: chef-software.chef-azdo.install.component@3
-#   displayName: Install Chef Component
-#   inputs:
-#     component: chef-workstation
-
 - task: PowerShell@2
   displayName: Install Chef Workstation
   inputs:
@@ -35,15 +30,6 @@ steps:
     CHEF_LICENSE: accept
     PATH: C:\opscode\chef-workstation\bin\
     
-- task: CmdLine@2
-  displayName: Run Chef-Client
-  inputs:
-    script: 'C:\opscode\chef-workstation\bin\chef-client -z'
-    workingDirectory: '$(Build.Repository.LocalPath)/zero_repo'
-  env:
-    CHEF_LICENSE: accept
-    PATH: C:\opscode\chef-workstation\bin\
-
 - task: CmdLine@2
   displayName: Run Chef-Client
   inputs:

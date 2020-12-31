@@ -1,8 +1,0 @@
----
-provisioner:
-  name: chef_zero
-
-suites:
-  - name: chocolatey_packages
-    provisioner:
-      policyfile: ./Policyfile.rb

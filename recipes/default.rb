@@ -1,5 +1,5 @@
 #
-# Cookbook:: chocolatey_packages
+# Cookbook:: manage_chocolatey
 # Recipe:: default
 #
 # Copyright 2021, Peter Sisk
@@ -17,10 +17,6 @@
 # limitations under the License.
 #
 
-# include_recipe 'chocolatey_packages::install'
-# include_recipe 'chocolatey_packages::configure'
-# include_recipe 'chocolatey_packages::packages'
-
 include_recipe 'chocolatey'
 
 manage_chocolatey_configuration 'magic' do
@@ -30,7 +26,7 @@ manage_chocolatey_configuration 'magic' do
   configure_sources true
 end
 
-manage_chocolatey_packages 'magic' do
+manage_manage_chocolatey 'magic' do
   installs true
   updates true
   managed_updates true

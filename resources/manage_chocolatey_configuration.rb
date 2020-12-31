@@ -1,5 +1,5 @@
 #
-# Cookbook:: chocolatey_packages
+# Cookbook:: manage_chocolatey
 # Resource:: manage_chocolatey_configuration
 #
 # Copyright 2021, Peter Sisk
@@ -28,9 +28,9 @@ property :configure_sources, [true, false], default: true
 action :manage do
   return unless platform_family?('windows')
 
-  unless node['chocolatey_packages']['enabled_features'].empty?
+  unless node['manage_chocolatey']['enabled_features'].empty?
 
-    node['chocolatey_packages']['enabled_features'].each do |feature|
+    node['manage_chocolatey']['enabled_features'].each do |feature|
       chocolatey_feature feature do
         action :enable
         only_if { new_resource.enable_features }
@@ -38,9 +38,9 @@ action :manage do
     end
   end
 
-  unless node['chocolatey_packages']['disabled_features'].empty?
+  unless node['manage_chocolatey']['disabled_features'].empty?
 
-    node['chocolatey_packages']['disabled_features'].each do |feature|
+    node['manage_chocolatey']['disabled_features'].each do |feature|
       chocolatey_feature feature do
         action :disable
         only_if { new_resource.disable_features }
@@ -48,9 +48,9 @@ action :manage do
     end
   end
 
-  unless node['chocolatey_packages']['config_settings'].empty?
+  unless node['manage_chocolatey']['config_settings'].empty?
 
-    node['chocolatey_packages']['config_settings'].each do |config|
+    node['manage_chocolatey']['config_settings'].each do |config|
       chocolatey_config config['name'] do
         value config['value']
         action :set
@@ -59,8 +59,8 @@ action :manage do
     end
   end
 
-  if node['chocolatey_packages']['private_feed'] == true
-    node['chocolatey_packages']['sources'].each do |source|
+  if node['manage_chocolatey']['private_feed'] == true
+    node['manage_chocolatey']['sources'].each do |source|
       chocolatey_source source['source_name'] do
         source source['source_url']
         admin_only source['admin_only'] if !source['admin_only'].nil?
@@ -76,7 +76,7 @@ action :manage do
   chocolatey_source 'chocolatey' do
     source 'https://chocolatey.org/api/v2/'
     action :disable
-    only_if { node['chocolatey_packages']['disable_public_feed'] }
+    only_if { node['manage_chocolatey']['disable_public_feed'] }
     only_if { new_resource.configure_sources }
   end
 end
