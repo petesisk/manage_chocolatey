@@ -76,10 +76,10 @@ action :manage do
 
   unless node['manage_chocolatey']['safe_updates'].empty?
 
-    node['manage_chocolatey']['safe_updates'].uniq.each do |name, process|
-      chocolatey_package name do
+    node['manage_chocolatey']['safe_updates'].uniq.each do |safe_update|
+      chocolatey_package safe_update['package_name'] do
         action :upgrade
-        not_if { process_list.include?(process) }
+        not_if { process_list.include?(safe_update['process_name']) }
         returns return_codes
         ignore_failure new_resource.ignore_failure
         only_if { new_resource.safe_updates }
