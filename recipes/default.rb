@@ -33,3 +33,5 @@ manage_chocolatey_packages 'magic' do
   safe_updates true
   ignore_failure false
 end
+
+node.default['manage_chocolatey']['installs'] << '7zip'
