@@ -27,6 +27,16 @@ jobs:
         shell: powershell
         run: |
           . { iwr -useb https://omnitruck.chef.io/install.ps1 } | iex; install -project chef-workstation
+      
+      - name: Update Path
+        shell: cmd
+        run: |
+          echo "C:\opscode\chef-workstation\bin\" >> $GITHUB_PATH
+          
+      - name: Update Path
+        shell: cmd
+        run: |
+          dir
 
       - name: Install Chef PolicyFile
         shell: cmd
