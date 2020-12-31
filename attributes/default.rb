@@ -91,8 +91,10 @@ default['chocolatey_packages'] = {
   ],
   # chocolatey config settings
   'config_settings' => [
-    'cacheLocation' => '',
-    'commandExecutionTimeoutSeconds' => '14400'
+    {
+      'name' => 'commandExecutionTimeoutSeconds',
+      'value' => '14400'
+    }
   ],
   'ignore_failure' => false,
   'return_codes' => [0, 3010]

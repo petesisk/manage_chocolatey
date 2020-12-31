@@ -50,9 +50,10 @@ action :manage do
 
   unless node['chocolatey_packages']['config_settings'].empty?
 
-    node['chocolatey_packages']['config_settings'].each do |name, config_value|
-      chocolatey_config name do
-        value config_value
+    node['chocolatey_packages']['config_settings'].each do |config|
+      chocolatey_config config['name'] do
+        value config['value']
+        action :set
         only_if { new_resource.configure_settings }
       end
     end
@@ -60,10 +61,10 @@ action :manage do
 
   if node['chocolatey_packages']['private_feed'] == true
     node['chocolatey_packages']['sources'].each do |source|
-      chocolatey_source source.source_name do
-        source source.source_url
-        admin_only source.admin_only
-        source source.allow_self_service
+      chocolatey_source source['source_name'] do
+        source source['source_url']
+        admin_only source['admin_only'] if !source['admin_only'].nil?
+        allow_self_service source['allow_self_service'] if !source['allow_self_service'].nil?
         action :add
         only_if { new_resource.configure_sources }
       end
