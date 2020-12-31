@@ -24,12 +24,12 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install Chef-Workstation
-        shell: pwsh
+        shell: powershell
         run: |
           . { iwr -useb https://omnitruck.chef.io/install.ps1 } | iex; install -project chef-workstation
 
       - name: Install Chef PolicyFile
-        shell: pwsh
+        shell: cmd
         run: |
           C:\opscode\chef-workstation\bin\chef install
         env:
@@ -37,18 +37,18 @@ jobs:
           PATH: C:\opscode\chef-workstation\bin\
 
       - name: Export Chef PolicyFile
-        shell: pwsh
+        shell: cmd
         run: |
-          C:\opscode\chef-workstation\bin\chef export $GITHUB_WORKSPACE/zero_repo
+          C:\opscode\chef-workstation\bin\chef export ./zero_repo
         env:
           CHEF_LICENSE: accept
           PATH: C:\opscode\chef-workstation\bin\
 
       - name: Run Chef-Client
-        shell: pwsh
+        shell: cmd
         run: |
           C:\opscode\chef-workstation\bin\chef-client -z
-        working-directory: $GITHUB_WORKSPACE/zero_repo
+        working-directory: ./zero_repo
         env:
           CHEF_LICENSE: accept
           PATH: C:\opscode\chef-workstation\bin\
