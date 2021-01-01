@@ -39,6 +39,8 @@ Although the cookbook could be used with lower versions, the chocolatey_feature 
 # Usage
 
 Using this template as an example, users should set attributes that suit their own requirements.<br/>
+The cookbook also includes yaml files for use in Azure Pipelines or GitHub Actions.<br/>
+These services can be used to test and verify the cookbook as it is customised.
 
 In the example provided, this cookbook will do the following :
 - Install Chocolatey
