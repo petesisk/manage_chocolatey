@@ -37,6 +37,7 @@ jobs:
         shell: powershell
         run: |
           C:\opscode\chef-workstation\bin\chef install
+        working-directory: ${{ github.workspace }}
         env:
           CHEF_LICENSE: accept
 
@@ -44,6 +45,7 @@ jobs:
         shell: cmd
         run: |
           C:\opscode\chef-workstation\bin\chef export ./zero_repo
+        working-directory: ${{ github.workspace }}
         env:
           CHEF_LICENSE: accept
 
@@ -51,6 +53,6 @@ jobs:
         shell: cmd
         run: |
           C:\opscode\chef-workstation\bin\chef-client -z
-        working-directory: ./zero_repo
+        working-directory: zero_repo
         env:
           CHEF_LICENSE: accept
