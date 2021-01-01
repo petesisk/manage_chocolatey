@@ -31,18 +31,18 @@ jobs:
       - name: Update Path
         shell: powershell
         run: |
-          echo "::add-path::C:\opscode\chef-workstation\bin"
+          echo "C:\opscode\chef-workstation\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
           
       - name: Echo Path
         shell: powershell
         run: |
           echo "$env:PATH"
                 
-      - name: Echo Path
-        shell: powershell
-        run: |
-          $env:Path += ";C:\opscode\chef-workstation\bin"
-          echo "$env:PATH"
+#       - name: Echo Path
+#         shell: powershell
+#         run: |
+#           $env:Path += ";C:\opscode\chef-workstation\bin"
+#           echo "$env:PATH"
 
       - name: Install Chef PolicyFile
         shell: powershell
