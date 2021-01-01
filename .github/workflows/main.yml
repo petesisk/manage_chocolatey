@@ -34,7 +34,7 @@ jobs:
           echo "C:\opscode\chef-workstation\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
 
       - name: Install Chef PolicyFile
-        shell: powershell
+        shell: cmd
         run: |
           C:\opscode\chef-workstation\bin\chef install
         working-directory: ${{ github.workspace }}
