@@ -34,12 +34,12 @@ jobs:
           echo "C:\opscode\chef-workstation\bin\" >> $GITHUB_PATH
           
       - name: Echo Path
-        shell: cmd
+        shell: powershell
         run: |
           echo "{$GITHUB_PATH}"
 
       - name: Install Chef PolicyFile
-        shell: cmd
+        shell: powershell
         run: |
           C:\opscode\chef-workstation\bin\chef install
         env:
