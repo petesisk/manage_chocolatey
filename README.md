@@ -38,8 +38,7 @@ Although the cookbook could be used with lower versions, the chocolatey_feature 
 
 # Usage
 
-Users of the cookbook should use the above attributes to configure Chocolatey and provide a list of software to manage.<br/>
-Using this template as an example, users should provide attributes that suit their own requirements.
+Using this template as an example, users should set attributes that suit their own requirements.<br/>
 
 In the example provided, this cookbook will do the following :
 - Install Chocolatey
