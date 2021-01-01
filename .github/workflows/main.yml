@@ -23,20 +23,20 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Install Chef-Workstation
-        shell: powershell
-        run: |
-          . { iwr -useb https://omnitruck.chef.io/install.ps1 } | iex; install -project chef-workstation
+#       - name: Install Chef-Workstation
+#         shell: powershell
+#         run: |
+#           . { iwr -useb https://omnitruck.chef.io/install.ps1 } | iex; install -project chef-workstation
       
       - name: Update Path
         shell: cmd
         run: |
           echo "C:\opscode\chef-workstation\bin\" >> $GITHUB_PATH
           
-      - name: Update Path
+      - name: Echo Path
         shell: cmd
         run: |
-          dir
+          echo $GITHUB_PATH
 
       - name: Install Chef PolicyFile
         shell: cmd
@@ -44,7 +44,6 @@ jobs:
           C:\opscode\chef-workstation\bin\chef install
         env:
           CHEF_LICENSE: accept
-          PATH: C:\opscode\chef-workstation\bin\
 
       - name: Export Chef PolicyFile
         shell: cmd
