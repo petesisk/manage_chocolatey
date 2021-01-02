@@ -1,0 +1,5 @@
+ChefStyle/CommentFormat:
+  Enabled: false
+
+Style/NegatedIf:
+  Enabled: false

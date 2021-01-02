@@ -20,22 +20,22 @@
 default['manage_chocolatey'] = {
   # installs is a list of packages that will be installed (but not updated)
   'installs' => [
-    'googlechrome'
+    'googlechrome',
   ],
   # updates is a list of packages that will be installed AND updated
   'updates' => [
-    'git'
+    'git',
   ],
   # managed_updates are packages that will be updated only if already installed
   'managed_updates' => [
-    'firefox'
+    'firefox',
   ],
   # safe_updates are only updated if the specified process is not running
   # this prevents updates that would fail or cause an app to quit during use
   'safe_updates' => [
     {
       'package_name' => 'zoom',
-      'process_name' => 'zoom'
+      'process_name' => 'zoom',
     },
   ],
   # configures a private chocolatey repo
@@ -47,7 +47,7 @@ default['manage_chocolatey'] = {
       'source_name' => '',
       'source_url' => '',
       'admin_only' => false,
-      'allow_self_service' => false
+      'allow_self_service' => false,
     },
   ],
   # when using a private repo, you may wish to disable the public feed
@@ -65,7 +65,7 @@ default['manage_chocolatey'] = {
   'config_settings' => [
     {
       'name' => 'commandExecutionTimeoutSeconds',
-      'value' => '14400'
+      'value' => '14400',
     },
   ],
   # chef will ignore any package failures and move on to the next
@@ -73,7 +73,7 @@ default['manage_chocolatey'] = {
   'ignore_failure' => false,
   # set the allowed exit codes for packages
   # without this setting, a 3010 exit code would fail the chef run
-  'return_codes' => [0, 3010]
+  'return_codes' => [0, 3010],
 }
 
 # attributes that configure the chocolatey community cookbook
@@ -82,6 +82,6 @@ default['chocolatey'] = {
   'sensitive' => true,
   'upgrade' => false,
   'install_vars' => {
-    'chocolateyVersion' => '0.10.5'
-  }
+    'chocolateyVersion' => '0.10.5',
+  },
 }

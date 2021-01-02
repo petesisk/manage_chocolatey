@@ -18,7 +18,7 @@
 #
 
 resource_name :manage_chocolatey_packages
-provides :manage_chocolatey_packages, :os => 'windows'
+provides :manage_chocolatey_packages, os: 'windows'
 default_action :manage
 property :installs, [true, false], default: true
 property :updates, [true, false], default: true
@@ -31,10 +31,10 @@ action :manage do
 
   return_codes = node['manage_chocolatey']['return_codes']
   choco_list = shell_out(
-    'C:/programdata/chocolatey/bin/clist.exe -lo -r --id-only',
+    'C:/programdata/chocolatey/bin/clist.exe -lo -r --id-only'
   ).stdout
   process_list = powershell_out(
-    '(Get-Process).Name',
+    '(Get-Process).Name'
   ).stdout
 
   unless node['manage_chocolatey']['installs'].empty?

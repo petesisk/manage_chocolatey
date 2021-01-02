@@ -18,7 +18,7 @@
 #
 
 resource_name :manage_chocolatey_configuration
-provides :manage_chocolatey_configuration, :os => 'windows'
+provides :manage_chocolatey_configuration, os: 'windows'
 default_action :manage
 property :enable_features, [true, false], default: true
 property :disable_features, [true, false], default: true
@@ -83,6 +83,7 @@ action :manage do
   chocolatey_source 'chocolatey' do
     source 'https://chocolatey.org/api/v2/'
     action source_action
+    only_if { node['manage_chocolatey']['disable_public_feed'] }
     only_if { new_resource.configure_sources }
   end
 end
