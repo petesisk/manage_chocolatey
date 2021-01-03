@@ -11,6 +11,25 @@ https://github.com/chocolatey-community/chocolatey-cookbook
 This cookbook also requires Chef Infra Client version 15.1+<br/>
 Although the cookbook could be used with lower versions, the chocolatey_feature resource makes configuring chocolatey much more convenient.
 
+# Usage
+
+Using this template as an example, users should set attributes that suit their own requirements.<br/>
+The cookbook also includes yaml files for use in Azure Pipelines or GitHub Actions.<br/>
+These services can be used to test and verify the cookbook as it is customised.
+
+In the example provided, this cookbook will do the following :
+- Install Chocolatey
+- Install the googlechrome package from the public Chocolatey feed
+- Update the git package (or install if not already present)
+- Update the firefox package, but only if it is already installed
+- Update/Install the zoom package (but only if the zoom process is not currently running)
+- Enable the 'allowGlobalConfirmation' chocolatey feature
+- Disable the 'showDownloadProgress' chocolatey feature
+- Set the 'commandExecutionTimeoutSeconds' setting to 14400 seconds
+
+For more detailed information, consult the [wiki](https://github.com/petesisk/manage_chocolatey/wiki)
+
+
 # Attributes
 
 - node['manage_chocolatey']['installs']<br/>
@@ -36,20 +55,3 @@ Although the cookbook could be used with lower versions, the chocolatey_feature 
 - node['chocolatey']['install_vars']<br/>
 - node['chocolatey']['install_vars']['chocolateyVersion']
 
-# Usage
-
-Using this template as an example, users should set attributes that suit their own requirements.<br/>
-The cookbook also includes yaml files for use in Azure Pipelines or GitHub Actions.<br/>
-These services can be used to test and verify the cookbook as it is customised.
-
-In the example provided, this cookbook will do the following :
-- Install Chocolatey
-- Install the googlechrome package from the public Chocolatey feed
-- Update the git package (or install if not already present)
-- Update the firefox package, but only if it is already installed
-- Update/Install the zoom package (but only if the zoom process is not currently running)
-- Enable the 'allowGlobalConfirmation' chocolatey feature
-- Disable the 'showDownloadProgress' chocolatey feature
-- Set the 'commandExecutionTimeoutSeconds' setting to 14400 seconds
-
-For more detailed information, consult the [wiki](https://github.com/petesisk/manage_chocolatey/wiki)
