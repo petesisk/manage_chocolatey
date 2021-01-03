@@ -5,4 +5,4 @@ Style/NegatedIf:
   Enabled: false
 
 Layout/EndOfLine:
-  Enable: false
+  Enabled: false
