@@ -52,7 +52,7 @@ jobs:
         env:
           CHEF_LICENSE: accept
 
-      - name: Run Chef-Client
+      - name: Run Cookstyle Linting
         shell: cmd
         run: |
           C:\opscode\chef-workstation\bin\cookstyle .
