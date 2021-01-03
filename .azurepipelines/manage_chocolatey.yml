@@ -38,3 +38,12 @@ steps:
   env:
     CHEF_LICENSE: accept
     PATH: C:\opscode\chef-workstation\bin\
+
+- task: CmdLine@2
+  displayName: Run Cookstyle Linting
+  inputs:
+    script: 'C:\opscode\chef-workstation\bin\cookstyle .'
+    workingDirectory: '$(Build.Repository.LocalPath)'
+  env:
+    CHEF_LICENSE: accept
+    PATH: C:\opscode\chef-workstation\bin\
