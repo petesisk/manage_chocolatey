@@ -51,3 +51,11 @@ jobs:
         working-directory: zero_repo
         env:
           CHEF_LICENSE: accept
+
+      - name: Run Chef-Client
+        shell: cmd
+        run: |
+          C:\opscode\chef-workstation\bin\cookstyle .
+        working-directory: ${{ github.workspace }}
+        env:
+          CHEF_LICENSE: accept
