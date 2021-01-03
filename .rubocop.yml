@@ -1,5 +1,8 @@
-ChefStyle/CommentFormat:
+Chef/Style/CommentFormat:
   Enabled: false
 
 Style/NegatedIf:
   Enabled: false
+
+Layout/EndOfLine:
+  Enable: false
